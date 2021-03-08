@@ -29,11 +29,18 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section(header:Text("amount and people")) {
-                    TextField("Amount", text: $totalAmount)
-                        .keyboardType(.decimalPad)
 
-                    TextField("Number of people", text: $numOfPeople)
-                        .keyboardType(.decimalPad)
+                    HStack {
+                        Text("Rp. ")
+                        TextField("Amount", text: $totalAmount)
+                            .keyboardType(.decimalPad)
+                    }
+
+                    HStack {
+                        Text("Person(s): ")
+                        TextField("Number of persons", text: $numOfPeople)
+                            .keyboardType(.decimalPad)
+                    }
 
                 }
 
@@ -47,7 +54,7 @@ struct ContentView: View {
                 }
 
                 Section(header:Text("Total per person")) {
-                    Text("\(totalPerPerson, specifier: "%.0f")")
+                    Text("Rp. \(totalPerPerson, specifier: "%.0f")")
                 }
             }
             .navigationBarTitle(Text("WeSplit"), displayMode: .inline)
