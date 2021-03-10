@@ -33,7 +33,7 @@ struct ContentView: View {
         }
 
         guard isPossible(word: newWord) else {
-            wordError(title: "Word is not possible", message: "Dont make your own word!")
+            wordError(title: "Word is not possible", message: "Don't make your own word!")
             return
         }
 
