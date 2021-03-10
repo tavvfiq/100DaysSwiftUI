@@ -47,15 +47,9 @@ struct ContentView: View {
                         .fontWeight(.black)
                 }
                 ForEach(0..<3) { (index) in
-                    Button(action: {
+                    FlagImage(flagName: self.countries[index]) {
                         self.onFlagTapped(flagIndex: index)
-                    }, label: {
-                        Image(self.countries[index])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black, radius: 2)
-                    })
+                    }
                 }
                 Spacer()
             }
@@ -64,6 +58,20 @@ struct ContentView: View {
                 self.continueGuessing()
             })
         }
+    }
+}
+
+struct FlagImage: View {
+    let flagName: String
+    let onTap: () -> Void
+    var body: some View {
+        Button(action: self.onTap, label: {
+            Image(self.flagName)
+                .renderingMode(.original)
+                .clipShape(Capsule())
+                .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                .shadow(color: .black, radius: 2)
+        })
     }
 }
 
